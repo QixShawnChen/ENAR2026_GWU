@@ -122,7 +122,7 @@ print(feat_var_mRNA.describe(percentiles=[.05, 0.1,0.15,0.2,0.25,0.3,.5,.95, .99
 # %% [markdown]
 # The variance after dropping >30% missing features is still very "zero-inflated"; If we fabricate and standardize those with small absolute variance, we may exaggerate some measurement error and give meaningless signal. We decide to drop bottom 20% with variance for both.
 # %%
-#Exclusion criteria 4: Features with extremely low variance (<15-20%)
+#Exclusion criteria 4: Features with extremely low variance (<20%)
 var_raw_meth = X_meth_df_comp.var(axis=0, skipna=True)
 cutoff_meth = var_raw_meth.quantile(0.2)
 print("Variance cutoff:", cutoff_meth)
