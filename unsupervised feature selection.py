@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 # %%
-merged_all = pd.read_csv("/Users/mac1/Desktop/merged_1_4.csv")
+merged_all = pd.read_csv("/Users/mac1/Desktop/DATAFEST/merged_1_4.csv")
 # %%
 merged_all.shape #we have 2509 merged samples
 # %%
@@ -27,7 +27,7 @@ merged_clinical=merged_survival.iloc[:,:35]
 merged_genetic = merged_survival.iloc[:, [0] + list(range(36, merged_all.shape[1]))]
 merged_clinical.count() #1 indicator, 34 clinical features
 # %%
-df_meth.to_csv("/Users/mac1/Desktop/merged_clinical.csv", index=False)
+merged_clinical.to_csv("/Users/mac1/Desktop/merged_clinical.csv", index=False)
 # %%
 #split the genetic dataset into mythelation and mRNA
 col_idx=merged_genetic.columns.get_loc("RERE_mrna")
@@ -122,7 +122,7 @@ print(feat_var_mRNA.describe(percentiles=[.05, 0.1,0.15,0.2,0.25,0.3,.5,.95, .99
 # %% [markdown]
 # The variance after dropping >30% missing features is still very "zero-inflated"; If we fabricate and standardize those with small absolute variance, we may exaggerate some measurement error and give meaningless signal. We decide to drop bottom 20% with variance for both.
 # %%
-#Exclusion criteria 4: Features with extremely low variance (<20%)
+#Exclusion criteria 4: Features with extremely low variance (<15-20%)
 var_raw_meth = X_meth_df_comp.var(axis=0, skipna=True)
 cutoff_meth = var_raw_meth.quantile(0.2)
 print("Variance cutoff:", cutoff_meth)
@@ -144,41 +144,59 @@ X_meth_df_imp = X_meth_df_var.apply(lambda col: col.fillna(col.median()), axis=0
 X_mRNA_df_imp = X_mRNA_df_var.apply(lambda col: col.fillna(col.median()), axis=0)
 # %%
 #Standardization based on imputed X
-X_meth_df_imp_z = StandardScaler().fit_transform(X_meth_df_imp)
-X_mRNA_df_imp_z = StandardScaler().fit_transform(X_mRNA_df_imp)
+# Methylation
+scaler_meth = StandardScaler()
+X_meth_df_imp_z = pd.DataFrame(
+    scaler_meth.fit_transform(X_meth_df_imp),
+    columns=X_meth_df_imp.columns,
+    index=X_meth_df_imp.index
+)
+
+# mRNA
+scaler_mrna = StandardScaler()
+X_mRNA_df_imp_z = pd.DataFrame(
+    scaler_mrna.fit_transform(X_mRNA_df_imp),
+    columns=X_mRNA_df_imp.columns,
+    index=X_mRNA_df_imp.index
+)
 # %% [markdown]
 # Okay, let's go ahead for correlation pruning. Here, we choose to use pure feature–feature correlation pruning, becasue joint Cox models confounds relevance with redundancy; penalized Cox alone becomes not stable under extreme correlation.
 # %%
-#pure featurdef correlation_prune(X, threshold=0.9):
-def correlation_prune(X, threshold=0.90):
-    n = X.shape[1]
+#pure featurdef correlation_prune(X, threshold=0.5):
+def correlation_prune_df(X: pd.DataFrame, threshold: float = 0.50):
+    """
+    Returns:
+      keep_mask: np.ndarray[bool] of length p
+      kept_cols: list of column names kept
+    """
+    Xv = X.to_numpy()  # keep column names separately
+    n = Xv.shape[1]
     keep = np.ones(n, dtype=bool)
 
     for i in range(n):
         if not keep[i]:
             continue
-        xi = X[:, i]
+        xi = Xv[:, i]
         for j in range(i + 1, n):
             if keep[j]:
-                corr = np.corrcoef(xi, X[:, j])[0, 1]
+                corr = np.corrcoef(xi, Xv[:, j])[0, 1]
                 if abs(corr) > threshold:
                     keep[j] = False
-    return keep
+
+    kept_cols = X.columns[keep].tolist()
+    return keep, kept_cols
+
 # %%
-keep_meth = correlation_prune(X_meth_df_imp_z, threshold=0.50) #0.5
-X_meth_pruned = X_meth_df_imp_z[:, keep_meth]
+keep_meth, meth_cols = correlation_prune_df(X_meth_df_imp_z, threshold=0.50)
+X_meth_pruned = X_meth_df_imp_z.loc[:, meth_cols]
 X_meth_pruned.shape # we exclude 1573 one of >0.5 correlated pairs
 # %%
-keep_mRNA = correlation_prune(X_mRNA_df_imp_z, threshold=0.50) #0.5
-X_mRNA_pruned = X_mRNA_df_imp_z[:, keep_mRNA]
+X_meth_pruned.to_csv("/Users/mac1/Desktop/X_meth_pruned.csv", index=False)
+# %%
+keep_mrna, mrna_cols = correlation_prune_df(X_mRNA_df_imp_z, threshold=0.50)
+X_mRNA_pruned = X_mRNA_df_imp_z.loc[:, mrna_cols]
 X_mRNA_pruned.shape # we exclude 6588 one of >0.5 correlated pairs
 # %%
-# Convert to DataFrame
-df_meth  = pd.DataFrame(X_meth_pruned)
-df_mRNA  = pd.DataFrame(X_mRNA_pruned)
-
-# Save
-df_meth.to_csv("/Users/mac1/Desktop/X_meth_pruned.csv", index=False)
-df_mRNA.to_csv("/Users/mac1/Desktop/X_mRNA_pruned.csv", index=False)
+X_mRNA_pruned.to_csv("/Users/mac1/Desktop/X_mRNA_pruned.csv", index=False)
 # %% [markdown]
 # By the point, we have done feature selection solely based on genetic data structures (Unsupervised feature pre-selection). Let's then move on for Supervised survival feature selection to select most joinly relevant features with survival by Elastic Net Cox.
