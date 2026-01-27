@@ -64,3 +64,32 @@ Evaluation & Visualization
 ```
 
 
+## 💻 Code
+- **Data Preparation**
+
+- **Feature Selection Strategy 1**
+
+    * /ENAR2026/dataset_preparation.ipynb: The script works for combining Clinical datasets, mRNA, and DNA methylation by subject id.
+
+- **Feature Selection Strategy 2 & 2**
+
+    * /ENAR2026/Feature Selection Strategy 2&3 /1script_annotation_preparation_table.ipynb: 
+    The script converts the Data_mutation.txt table into the required format for 'Ensembl' to annotate.
+
+    * /ENAR2026/Feature Selection Strategy 2&3 /2clinival_signal_select_rsid.ipynb:
+    The script selects the variants by impact size, functional consequences, and clinical signal.
+
+    * /ENAR2026/Feature Selection Strategy 2&3 /3clinical_signal_select_hugo_symbol.ipynb:
+    The script extracts the corresponding Hugo symbols of selected variants.
+
+    * /ENAR2026/Feature Selection Strategy 2&3 /4gwas_hugo_selection.ipynb:
+    The script extracts the significant variants from well-known GWAS Summary Statistics and extracts the corresponding Hugo symbols of the selected variants.
+
+    * /ENAR2026/Feature Selection Strategy 2&3 /5merge_selected_hugo_to_df.ipynb:
+    The scripts selects features of combined dataset by merging the selected Hugo symbols with the prefix of mRNA features and methylation features.
+
+- **Model Training & Evaluation & Visualization (Elastic Net)**
+
+- **Model Training & Evaluation & Visualization (Random Survival Forest)**
+
+- **Model Training & Evaluation & Visualization (DeepSurv)**
