@@ -287,7 +287,7 @@ if len(times) < 2:
 ibs = ev_test.integrated_brier_score(times)
 print("Test IBS:", ibs)
 
-# (Optional) Brier score curve over time (for plotting)
+# Brier score curve over time (for plotting)
 bs = ev_test.brier_score(times)
 
 # import matplotlib.pyplot as plt
