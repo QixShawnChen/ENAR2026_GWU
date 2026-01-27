@@ -67,11 +67,13 @@ Evaluation & Visualization
 ## 💻 Code
 - **Data Preparation**
 
-- **Feature Selection Strategy 1**
-
     * /ENAR2026/dataset_preparation.ipynb: The script works for combining Clinical datasets, mRNA, and DNA methylation by subject id.
 
-- **Feature Selection Strategy 2 & 2**
+- **Feature Selection Strategy 1**
+
+    
+
+- **Feature Selection Strategy 2 & 3**
 
     * /ENAR2026/Feature Selection Strategy 2&3 /1script_annotation_preparation_table.ipynb: 
     The script converts the Data_mutation.txt table into the required format for 'Ensembl' to annotate.
