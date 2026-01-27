@@ -104,36 +104,36 @@ Evaluation & Visualization
 
 - **Model Training & Evaluation & Visualization (Random Survival Forest)**
 
-*The scripts below summarize the random survival forest analyses with 5-fold cross-validation across different case combinations.*
+    * The scripts below summarize the random survival forest analyses with 5-fold cross-validation across different case combinations.*
 
-    * /ENAR2026/RSF/RSF clinical + case2.py:
+        * /ENAR2026/RSF/RSF clinical + case2.py
 
-    * /ENAR2026/RSF/RSF clinical only.py:
+        * /ENAR2026/RSF/RSF clinical only.py
 
-    * /ENAR2026/RSF/RSF clinical+case1.py:
+        * /ENAR2026/RSF/RSF clinical+case1.py
 
-    * /ENAR2026/RSF/RSF clinical+gwas+case1.py:
+        * /ENAR2026/RSF/RSF clinical+gwas+case1.py
 
-    * /ENAR2026/RSF/RSF clinical+gwas+case2.py:
+        * /ENAR2026/RSF/RSF clinical+gwas+case2.py
 
-    * /ENAR2026/RSF/RSF gwas+clinical.py:
+        * /ENAR2026/RSF/RSF gwas+clinical.py
 
 - **Model Training & Evaluation & Visualization (DeepSurv)**
 
-*The scripts below summarize the DeepSurv model tuning parameters based on validation performance across different case combinations.*
+    * The scripts below summarize the DeepSurv model tuning parameters based on validation performance across different case combinations.*
 
-    * /ENAR2026/Deepsurv/DeepSurv clinical only.py:
+        * /ENAR2026/Deepsurv/DeepSurv clinical only.py
 
-    * /ENAR2026/Deepsurv/DeepSurv clinical+case1+gwas.py:
+        * /ENAR2026/Deepsurv/DeepSurv clinical+case1+gwas.py
 
-    * /ENAR2026/Deepsurv/DeepSurv clinical+case2+gwas.py:
+        * /ENAR2026/Deepsurv/DeepSurv clinical+case2+gwas.py
 
-    * /ENAR2026/Deepsurv/Deepsurv clinical + case1.py:
+        * /ENAR2026/Deepsurv/Deepsurv clinical + case1.py
 
-    * /ENAR2026/Deepsurv/Deepsurv clinical + case 2.py:
+        * /ENAR2026/Deepsurv/Deepsurv clinical + case 2.py
 
-    * /ENAR2026/DeepsurvRSF/Deepsurv clinical+c1 mrna only.py:
+        * /ENAR2026/DeepsurvRSF/Deepsurv clinical+c1 mrna only.py
 
-    * /ENAR2026/DeepsurvRSF/Deepsurv clinical+case 2 mrna only.py:
+        * /ENAR2026/DeepsurvRSF/Deepsurv clinical+case 2 mrna only.py
 
-    * /ENAR2026/DeepsurvRSF/Deepsurv gwas+clinical.py:
+        * /ENAR2026/DeepsurvRSF/Deepsurv gwas+clinical.py
