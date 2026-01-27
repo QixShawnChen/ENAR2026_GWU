@@ -13,7 +13,7 @@ Does molecular data improve survival prediction beyond clinical variables alone?
 
 ### 🎯 Objectives
 
-- Evaluate whether **gene expression** and **DNA methylation** improve survival prediction
+- Evaluate whether integrating **gene expression** and **DNA methylation** improve survival prediction
 - Compare **prior-informed** vs **data-driven** feature selection strategies
 - Identify **top-performing feature combinations** with strongest predictive power
 - Assess **risk stratification capability**
@@ -104,6 +104,8 @@ Evaluation & Visualization
 
 - **Model Training & Evaluation & Visualization (Random Survival Forest)**
 
+*The scripts below summarize the random survival forest analyses with 5-fold cross-validation across different case combinations.*
+
     * /ENAR2026/RSF/RSF clinical + case2.py:
 
     * /ENAR2026/RSF/RSF clinical only.py:
@@ -117,6 +119,8 @@ Evaluation & Visualization
     * /ENAR2026/RSF/RSF gwas+clinical.py:
 
 - **Model Training & Evaluation & Visualization (DeepSurv)**
+
+*The scripts below summarize the DeepSurv model tuning parameters based on validation performance across different case combinations.*
 
     * /ENAR2026/Deepsurv/DeepSurv clinical only.py:
 
