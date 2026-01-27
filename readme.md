@@ -69,8 +69,15 @@ Evaluation & Visualization
 
     * /ENAR2026/dataset_preparation.ipynb: The script works for combining Clinical datasets, mRNA, and DNA methylation by subject id.
 
+    * /ENAR2026/clinical_impute/clinical feature.ipynb: The script works for listing and renaming clinical variables.
+
+    * /ENAR2026/clinical_impute/clinical imputation.R: The script works for multiple imputation for clinical variables.
+
+    * /ENAR2026/test_train_split.ipynb: The script works for combining, splitting, and imputing different feature sets.
+
 - **Feature Selection Strategy 1**
 
+    * /ENAR2026/unsupervised feature selection.py: The script works for unsupervised feature selection for Strategy 1.
 
 
 - **Feature Selection Strategy 2 & 3**
@@ -92,6 +99,37 @@ Evaluation & Visualization
 
 - **Model Training & Evaluation & Visualization (Elastic Net)**
 
+    * /ENAR2026/EN/EN.ipynb: 
+    The script writes a function for Elastic Net with cross-validation and functions to get Figure 2, including risk stratification, top feature bar charts and heatmaps, where the importance score of heatmap are stored in seperated txt file under /ENAR2026/EN.
+
 - **Model Training & Evaluation & Visualization (Random Survival Forest)**
 
+    * /ENAR2026/RSF/RSF clinical + case2.py:
+
+    * /ENAR2026/RSF/RSF clinical only.py:
+
+    * /ENAR2026/RSF/RSF clinical+case1.py:
+
+    * /ENAR2026/RSF/RSF clinical+gwas+case1.py:
+
+    * /ENAR2026/RSF/RSF clinical+gwas+case2.py:
+
+    * /ENAR2026/RSF/RSF gwas+clinical.py:
+
 - **Model Training & Evaluation & Visualization (DeepSurv)**
+
+    * /ENAR2026/Deepsurv/DeepSurv clinical only.py:
+
+    * /ENAR2026/Deepsurv/DeepSurv clinical+case1+gwas.py:
+
+    * /ENAR2026/Deepsurv/DeepSurv clinical+case2+gwas.py:
+
+    * /ENAR2026/Deepsurv/Deepsurv clinical + case1.py:
+
+    * /ENAR2026/Deepsurv/Deepsurv clinical + case 2.py:
+
+    * /ENAR2026/DeepsurvRSF/Deepsurv clinical+c1 mrna only.py:
+
+    * /ENAR2026/DeepsurvRSF/Deepsurv clinical+case 2 mrna only.py:
+
+    * /ENAR2026/DeepsurvRSF/Deepsurv gwas+clinical.py:
