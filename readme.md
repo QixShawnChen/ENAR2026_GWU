@@ -71,7 +71,7 @@ Evaluation & Visualization
 
 - **Feature Selection Strategy 1**
 
-    
+
 
 - **Feature Selection Strategy 2 & 3**
 
@@ -85,7 +85,7 @@ Evaluation & Visualization
     The script extracts the corresponding Hugo symbols of selected variants.
 
     * /ENAR2026/Feature Selection Strategy 2&3 /4gwas_hugo_selection.ipynb:
-    The script extracts the significant variants from well-known GWAS Summary Statistics and extracts the corresponding Hugo symbols of the selected variants.
+    The script extracts the significant variants from well-known breast cancer GWAS Summary Statistics ("https://www.ebi.ac.uk/gwas/studies/GCST90018799")  and extracts the corresponding Hugo symbols of the selected variants.
 
     * /ENAR2026/Feature Selection Strategy 2&3 /5merge_selected_hugo_to_df.ipynb:
     The scripts selects features of combined dataset by merging the selected Hugo symbols with the prefix of mRNA features and methylation features.
