@@ -78,6 +78,7 @@ Evaluation & Visualization
 - **Feature Selection Strategy 1**
 
     * /ENAR2026/unsupervised feature selection.py: The script works for unsupervised feature selection for Strategy 1.
+    * /ENAR2026/Strategy1_supervised_feature_selection_RSF.ipynb: The script works for supervised feature selection for Strategy 1 based on unsupervised output.
 
 
 - **Feature Selection Strategy 2 & 3**
